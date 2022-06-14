@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html class="has-aside-left has-aside-mobile-transition has-navbar-fixed-top has-aside-expanded">
+  <head>
+    <title>Admin One HTML - Bulma Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+    <div id="app" >
+    <%=render "admin/shared/navbar" %>
+    <%=render "admin/shared/aside" %>
+    <%=render "admin/shared/title_bar" %>
+    <%=render "admin/shared/hero" %> 
+    <%= yield %>
+    <%=render "admin/shared/footer" %>
+    </div>
+  </body>
+</html>
