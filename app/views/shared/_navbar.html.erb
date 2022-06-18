@@ -17,6 +17,11 @@
           <a class="navbar-item"> Tag </a>
           <a class="navbar-item"> Author </a>
           <a class="navbar-item"> Style Guide </a>
+          <%if signed_in? %>
+            <%= link_to "admin",admin_path,class:"navbar-item"%>
+          <%else%>
+            <%= link_to "Login",new_user_session_path,class:"navbar-item"%>
+          <%end%>
         </div>
       </div>
     </div>

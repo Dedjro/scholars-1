@@ -36,9 +36,12 @@
               <span>Messages</span>
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item">
-              <span class="icon"><i class="mdi mdi-logout"></i></span>
+           <%= button_to destroy_user_session_path, method: :delete, data: { turbo: "false" },class:"navbar-item" do%>
+               <span class="icon"><i class="mdi mdi-logout"></i></span>
               <span>Log Out</span>
+           <%end%>
+            <a class="navbar-item">
+             
             </a>
           </div>
         </div>
