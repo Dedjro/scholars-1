@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
     resources :dashboard, only: [:index]
     resources :posts
+    resources :categories
 
   end
  # resources :posts

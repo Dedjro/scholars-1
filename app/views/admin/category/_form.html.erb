@@ -1,0 +1,45 @@
+<div class="m-auto">
+  <%= form_with model: resource, url: route, method: method do |f| %>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <div class="control">
+            <% image_url = resource.image.attached? ? rails_representation_url(resource.image.variant(resize_to_limit: [500, 350]).processed, only_path: true) : asset_path('default-image.png') %>
+            <% image_name = resource.image.attached? ? resource.image.filename : 'Aucun image' %>
+            <div class="form-img-preview" data-controller="file-upload">
+              <%= image_tag( image_url, data: {'file-upload-target': "preview"} ) %>
+              <%= f.file_field :image, direct_upload: true, class: 'd-none', accept: 'image/jpeg, image/png', data: {'file-upload-target': 'fileInput', action: 'change->file-upload#fileChange'} %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column"></div>
+    </div>
+     <div class="columns">
+      <div class="column">
+        <div class="field <%= form_field_error_class(resource, 'title') %>">
+          <%= f.label :title, 'Titre ', class: 'label' %>
+          <div class="control">
+            <%= f.text_field :title, class: "input", placeholder: "Titre" %>
+          </div>
+          <%= form_field_error(resource, 'title') %>
+        </div>
+       </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <div class="field <%= form_field_error_class(resource, 'content') %>">
+          <%= f.label :content,'Contenu', class: 'label' %>
+          <div class="control ">
+            <%= f.rich_text_area :content, class: "textarea"%>
+          </div>
+          <%= form_field_error(resource, 'content') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Créer', class: "button is-primary" %>
+    </div>
+  <% end %>
+</div>  
